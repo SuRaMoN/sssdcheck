@@ -4,7 +4,7 @@ DESTDIR = /
 BINDIR=/usr/bin
 VERSION = 1.0.0
 UBUNTU_PACKAGES = rpm make bash git sed
-NAME=sssdmonitor
+NAME=sssdcheck
 SPECFILE=$(NAME).spec
 
 default:
@@ -30,8 +30,8 @@ rpm-build-deps-ubuntu:
 
 install:
 	mkdir -p $(DESTDIR)$(BINDIR)
-	cp -a sssdmonitor $(DESTDIR)$(BINDIR)/sssdmonitor
+	cp -a sssdcheck $(DESTDIR)$(BINDIR)/sssdcheck
 
 clean:
-	rm -f $(DESTDIR)$(BINDIR)/sssdmonitor
+	rm -f $(DESTDIR)$(BINDIR)/sssdcheck
 

@@ -1,12 +1,12 @@
-Name:           sssdmonitor
+Name:           sssdcheck
 Version:        $VERSION
 Release:        1%{?dist}
 Summary:        Clone of postmark for local installations
 
 Group:          Development Tools
 License:        none
-URL:            https://github.com/SuRaMoN/sssdmonitor
-Source0:        sssdmonitor-$VERSION.tar.gz
+URL:            https://github.com/SuRaMoN/sssdcheck
+Source0:        sssdcheck-$VERSION.tar.gz
 
 BuildRequires:  make
 Requires:       ldb-tools
@@ -33,7 +33,7 @@ make clean DESTDIR=$RPM_BUILD_ROOT BINDIR=%{_bindir}
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/sssdmonitor
+%{_bindir}/sssdcheck
 
 
 %changelog
