@@ -2,7 +2,7 @@
 .PHONY: rpm get-deps-ubuntu rpm-build-deps-centos rpm-build-deps-ubuntu install clean
 DESTDIR = /
 BINDIR=/usr/bin
-VERSION = 1.0.0
+VERSION = 1.0.1
 UBUNTU_PACKAGES = rpm make bash git sed
 NAME=sssdcheck
 SPECFILE=$(NAME).spec

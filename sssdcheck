@@ -10,9 +10,9 @@ fi
 
 TEST_USER="$1"
 
+FETCH_START="$(date +%s)"
 sss_cache -u "$TEST_USER"
 getent passwd "$TEST_USER" > /dev/null
-FETCH_START="$(date +%s)"
 LAST_UPDATE="$(ldbsearch -H /var/lib/sss/db/cache_LDAP.ldb "(name=$TEST_USER)" 2> /dev/null | grep lastUpdate | sed -e 's/^lastUpdate: //')"
 
 if (( "$FETCH_START" > "$LAST_UPDATE" )); then
