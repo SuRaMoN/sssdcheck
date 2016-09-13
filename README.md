@@ -1,52 +1,47 @@
 
+Disclaimer
+==========
+
+DO NOT USE THIS UNLESS YOU USE SSSD VERSION LOWER THAN 1.14. In sssd v1.14 [sssctl](https://fedorahosted.org/sssd/wiki/DesignDocs/sssctl) is introduced with similar (better) functionality. This is only written for legacy versions.
+
 About
 =====
 
-Bash script to check if PAM component of sssd is still in online mode.
-It ends quietly and successfully of sssd is
+Bash script to check if LDAP component of sssd is still in online mode.
+It ends quietly and successfully of sssd is still successfully connected with LDAP and it returns an exit code of 2 with an error message if for some reason sssd can no longer sync with LDAP.
 
-Install instructions
-====================
+Requirements and internal working
+=================================
 
-Just download the file mysql_rename_db and give it appropriate rights:
-```
-    wget "https://raw.githubusercontent.com/SuRaMoN/mysql_rename_db/master/mysql_rename_db"
-    chmod a+x mysql_rename_db
-```
-
-You can also install it system wide by doing:
-```
-    git clone "https://github.com/SuRaMoN/mysql_rename_db.git"
-    cd mysql_rename_db
-    sudo make install
-```
+It needs the ldb-tools installed and a test linux user that's configured through LDAP. The script clears the cache for the specified user, queries sssd and checks if the cache is updated.
 
 Usage
 =====
 
 Example:
+
 ```
-    mysql_rename_db -h server -u username -pPASSWORD old_database new_database
+    sssdcheck <TEST USER>
 ```
 
-All options are optional. If you eg have no password you are not required to provide one. You can pass any option that is accepted by the mysql client and mysqldump
+The test user parameter should be a linux username configured through LDAP.
 
-Internal working
-================
+Install instructions
+====================
 
-It will create the database and rename everything to the new database, at the end it will drop the old database. It will rename:
+Make sure you have ldb-tools installed. It can be found in the repo of your favorite linux distribution (which is of course debian).
 
- * triggers
- * tables
- * views
-
-RPM
-===
-
-You can create a centos/redhat RPM for it by running:
+Just download the file sssdcheck and give it appropriate rights:
 ```
-    git clone "https://github.com/SuRaMoN/mysql_rename_db.git"
-    cd mysql_rename_db
-    make rpm
+    wget "https://raw.githubusercontent.com/SuRaMoN/sssdcheck/master/sssdcheck"
+    chmod a+x sssdcheck
 ```
-The creation of the rpm works on both debian bases systems and redhat based systems.
+
+You can also install it system wide by doing:
+```
+    git clone "https://github.com/SuRaMoN/sssdcheck.git"
+    cd sssdcheck
+    sudo make install
+```
+
+
