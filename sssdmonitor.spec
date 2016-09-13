@@ -9,7 +9,7 @@ URL:            https://github.com/SuRaMoN/sssdmonitor
 Source0:        sssdmonitor-$VERSION.tar.gz
 
 BuildRequires:  make
-Requires:       mysql-libs
+Requires:       ldb-tools
 
 %description
 Check if sssd is still connected to LDAP
